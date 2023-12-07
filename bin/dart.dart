@@ -16,34 +16,46 @@ void wallet() {
 
     String choice = write("Votre choix: ");
 
-    if (choice == "1") {
-      wallet.showBalance();
-    } else if (choice == "2") {
-      String added = write("Montant à déposer (Ar): ");
-      int addedValue = int.parse(added);
-      wallet.addBalance(addedValue);
-    } else if (choice == "3") {
-      String subtracted = write("Montant à retirer (Ar): ");
-      int subtractedValue = int.parse(subtracted);
-      wallet.subtractBalance(subtractedValue);
-    } else if (choice == "4") {
-      wallet.showHistory();
-    } else if (choice == "5") {
-      String name = write("Le nom de la carte à stocker: ");
-      String value = write("La valeur de la carte: ");
-      wallet.addCard(name, value);
-    } else if (choice == "6") {
-      String search = write("Quel carte voulez vous prendre: ");
-    try {
-      var searchCard = wallet.getCard(search)!;
-      print("Voici votre carte : ${searchCard['name']}, ${searchCard['value']} \n");
-    } catch (e) {
-      print('Carte non trouvée');
+    switch (choice) {
+      case "1":
+        wallet.showBalance();
+        break;
+      case "2":
+        String added = write("Montant à déposer (Ar): ");
+        int addedValue = int.parse(added);
+        wallet.addBalance(addedValue);
+        break;
+      case "3":
+        String subtracted = write("Montant à retirer (Ar): ");
+        int subtractedValue = int.parse(subtracted);
+        wallet.subtractBalance(subtractedValue);
+        break;
+      case "4":
+        wallet.showHistory();
+        break;
+      case "5":
+        String name = write("Le nom de la carte à stocker: ");
+        String value = write("La valeur de la carte: ");
+        wallet.addCard(name, value);
+        break;
+      case "6":
+        String search = write("Quelle carte voulez-vous prendre: ");
+        try {
+          var searchCard = wallet.getCard(search)!;
+          print("Voici votre carte : ${searchCard['name']}, ${searchCard['value']} \n");
+        } catch (e) {
+          print('Carte non trouvée');
+        }
+        break;
+      case "0":
+        break;
+      default:
+        print("Choix non valide. Veuillez saisir un chiffre de 0 à 6.");
+        break;
     }
-    } else if (choice == "0") {
+
+    if(choice == "0"){
       break;
-    } else {
-      print("Choix non valide. Veuillez saisir un chiffre de 1 à 4.");
     }
   }
 }
