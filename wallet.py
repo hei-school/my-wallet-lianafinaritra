@@ -1,7 +1,10 @@
+import os
+
 class Wallet:
     def __init__(self):
         self.balance = 5000
         self.history = []
+        self.cards = []
 
     def add_transaction_to_history(self, type, value):
         new_transaction = {
@@ -34,6 +37,17 @@ class Wallet:
             self.add_transaction_to_history("Retrait", subtract_value)
             print(f"Votre nouveau solde est : {self.balance} Ar \n")
 
+    def add_card(self, name, value):
+        new_card = {
+            "name": name,
+            "value": value
+        }
+        self.cards.append(new_card)
+
+    def get_card(self, name):
+        return next((item for item in self.cards if item['name'] == name), None)
+
+
 def wallet():
     wallet = Wallet()
 
@@ -43,6 +57,8 @@ def wallet():
         print("2 - Déposer")
         print("3 - Retirer")
         print("4 - Historiques des transactions")
+        print("5 - Ajouter une carte")
+        print("6 - Récupérer une carte")
         print("0 - Sortir")
 
         choice = input("Votre choix: ")
@@ -60,6 +76,19 @@ def wallet():
 
         elif choice == "4":
             wallet.show_history()
+
+        elif choice == "5":
+            name = input('Le nom de la carte à stocker :')
+            value = input('La valeur de la carte :')
+            wallet.add_card(name, value)
+
+        elif choice == "6":
+            search = input('Quel carte voulez vous prendre :')
+            try:
+                search_card = wallet.get_card(search)
+                print(f"Voici votre carte : {search_card['name']}, {search_card['value']} \n")
+            except:
+                print('Carte non trouvée')
 
         elif choice == "0":
             break
