@@ -6,6 +6,8 @@ import { substractBalance } from './function/substractBalance.js';
 import { showHistory } from './function/showHistory.js';
 import { addCard } from './function/addCard.js';
 import { getCard } from './function/getCard.js';
+import { addPhoto } from './function/addPhoto.js';
+import { getPhoto } from './function/getPhoto.js';
 
 const wallet = () => {
     let balance = 5000;
@@ -13,6 +15,10 @@ const wallet = () => {
     let choice;
     let history = [];
     let cards = [];
+    let photos = [];
+    let wallet = {
+        "owner": "Liana Finaritra"
+    };
     while (true) {
         show('Appuyer sur un chiffre pour éxecuter une action: ' + 
         '\n 1 - Afficher le solde' + 
@@ -21,6 +27,9 @@ const wallet = () => {
         '\n 4 - Historiques des transactions' +
         '\n 5 - Ajouter une carte' +
         '\n 6 - Récupérer une carte' +
+        '\n 7 - Afficher les informations sur le portefeuille' +
+        '\n 8 - Ajouter une photo' +
+        '\n 9 - Récuperer une photo' +
         '\n 0 - Sortir \n');
 
         choice = promptFunction('Votre choix : ');
@@ -41,26 +50,36 @@ const wallet = () => {
                 showHistory(history);
                 break
             case '5':
-                const name = promptFunction('Le nom de la carte à stocker :');
-                const value = promptFunction('La valeur de la carte :');
-                addCard(cards, name, value);
                 console.clear();
+                const name = promptFunction('Le nom de la carte (CIN, CB, ...):');
+                const owner = promptFunction('Son propriétaire: ')
+                addCard(cards, name, owner);
                 break
-            case '6':
+            case '6':   
                 console.clear();
                 const search = promptFunction('Quel carte voulez vous prendre :');
-                try{
-                    const searchCard = getCard(cards, search);
-                    console.clear();
-                    show(`Voici votre carte: ${searchCard.name}, ${searchCard.value} \n`)
-                }catch{
-                    show('Carte non trouvée');
-                }
+                cards = getCard(cards, search);
+                break
+            case '7':
+                console.clear();
+                show(`\n Ce portefeuille appartient à: ${wallet.owner} \n`);
+                break
+            case '8':
+                console.clear();
+                const photoID = promptFunction("Un identifiant pour la photo: ");
+                const photoOwner = promptFunction('Son propriétaire: ');
+                addPhoto(photos, photoID, photoOwner);
+                break
+            case '9':
+                console.clear();
+                const searchPhoto = promptFunction('Quel photo voulez vous prendre :');
+                photos = getPhoto(photos, searchPhoto);
                 break
             case '0':
                 break;
             default:
-                show('Choix non valide. Veuillez saisir un chiffre de 1 à 4.');
+                console.clear();
+                show('\n Choix non valide. Veuillez saisir un chiffre de 1 à 4. \n');
                 break;
             }
         if (choice === '0') {

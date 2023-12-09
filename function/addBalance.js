@@ -6,6 +6,6 @@ export const addBalance = (history, currentBalance, moneyToAdd) => {
     currentBalance = currentBalance + addValue;
     addTransactionToHistory(history, "Dépot", addValue);
     console.clear();
-    show('Votre nouveau solde est: ' + currentBalance + ' Ar' + '\n');
+    show('\n Votre nouveau solde est: ' + currentBalance + ' Ar' + '\n');
     return currentBalance;
 }

@@ -1,7 +1,10 @@
-export const addCard = (cards, name, value) => {
+import { show } from "./show.js";
+
+export const addCard = (cards, name, owner) => {
     const newCard = {
         "name": name,
-        "value": value
+        "owner": owner
     }
     cards.push(newCard);
+    show('\n Ajout réussi \n');
 }   
