@@ -2,18 +2,18 @@ package model;
 
 public class Card {
     public String name;
-    public String value;
+    public String owner;
 
-    public Card(String name, String value) {
+    public Card(String name, String owner) {
         this.name = name;
-        this.value = value;
+        this.owner = owner;
     }
 
     public String getName(){
         return this.name;
     }
 
-    public String getValue(){
-        return this.value;
+    public String getOwner(){
+        return this.owner;
     }
 }
