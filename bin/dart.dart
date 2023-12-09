@@ -1,5 +1,6 @@
 import 'write.dart';
 import 'wallet.dart';
+import 'clear.dart';
 
 void wallet() {
   Wallet wallet = Wallet();
@@ -12,6 +13,9 @@ void wallet() {
     print("4 - Historiques des transactions");
     print("5 - Ajouter une carte");
     print("6 - Récupérer une carte");
+    print("7 - Afficher les informations sur le portefeuille");
+    print("8 - Ajouter une photo");
+    print("9 - Récuperer une photo");
     print("0 - Sortir");
 
     String choice = write("Votre choix: ");
@@ -34,23 +38,46 @@ void wallet() {
         wallet.showHistory();
         break;
       case "5":
+        clearConsole();
         String name = write("Le nom de la carte à stocker: ");
-        String value = write("La valeur de la carte: ");
-        wallet.addCard(name, value);
+        String owner = write("Son propriétaire: ");
+        wallet.addCard(name, owner);
         break;
       case "6":
+        clearConsole();
         String search = write("Quelle carte voulez-vous prendre: ");
         try {
           var searchCard = wallet.getCard(search)!;
-          print("Voici votre carte : ${searchCard['name']}, ${searchCard['value']} \n");
+          print("Voici la carte : ${searchCard['name']}, de ${searchCard['owner']} \n");
         } catch (e) {
           print('Carte non trouvée');
+        }
+        break;
+      case "7":
+        clearConsole();
+        wallet.showInfos();
+        break;
+      case "8":
+        clearConsole();
+        String photoID = write("Un identifiant pour la photo: ");
+        String owner = write("Son propriétaire: ");
+        wallet.addPhoto(photoID, owner);
+        break;
+      case "9":
+        clearConsole();
+        String search = write("Quelle photo voulez-vous prendre: ");
+        try {
+          var searchPhoto = wallet.getPhoto(search)!;
+          print("Voici la photo: ${searchPhoto['photoID']}, de ${searchPhoto['owner']} \n");
+        } catch (e) {
+          print('Photo non trouvée');
         }
         break;
       case "0":
         break;
       default:
-        print("Choix non valide. Veuillez saisir un chiffre de 0 à 6.");
+        clearConsole();
+        print("\n Choix non valide. Veuillez saisir un chiffre de 1 à 4. \n");
         break;
     }
 
