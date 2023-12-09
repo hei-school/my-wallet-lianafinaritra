@@ -46,12 +46,7 @@ void wallet() {
       case "6":
         clearConsole();
         String search = write("Quelle carte voulez-vous prendre: ");
-        try {
-          var searchCard = wallet.getCard(search)!;
-          print("Voici la carte : ${searchCard['name']}, de ${searchCard['owner']} \n");
-        } catch (e) {
-          print('Carte non trouvée');
-        }
+        wallet.getCard(search);
         break;
       case "7":
         clearConsole();
@@ -66,12 +61,7 @@ void wallet() {
       case "9":
         clearConsole();
         String search = write("Quelle photo voulez-vous prendre: ");
-        try {
-          var searchPhoto = wallet.getPhoto(search)!;
-          print("Voici la photo: ${searchPhoto['photoID']}, de ${searchPhoto['owner']} \n");
-        } catch (e) {
-          print('Photo non trouvée');
-        }
+        wallet.getPhoto(search);
         break;
       case "0":
         break;

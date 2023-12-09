@@ -66,8 +66,16 @@ class Wallet {
     print("\n Ajout réussi \n");
   }
 
-   Map<String, dynamic>? getCard(String name) {
-    return cards.firstWhere((item) => item['name'] == name);
+   void getCard(String name) {
+    try {
+      Map<String, dynamic> searchCard = cards.firstWhere((item) => item['name'] == name);
+      List<Map<String, dynamic>> updatedCards =
+        cards.where((item) => item['name'] != name).toList();
+      print("Voici la carte : ${searchCard['name']}, de ${searchCard['owner']} \n");
+      cards = updatedCards;
+    } catch (e) {
+      print('\n Carte non trouvée \n');
+    }
   }
 
   void addPhoto(String photoID, String owner) {
@@ -79,7 +87,15 @@ class Wallet {
     print("\n Ajout réussi \n");
   }
 
-   Map<String, dynamic>? getPhoto(String photoID) {
-    return photos.firstWhere((item) => item['photoID'] == photoID);
+  void getPhoto(String photoID) {
+    try {
+      Map<String, dynamic> searchPhoto = photos.firstWhere((item) => item['photoID'] == photoID);
+      List<Map<String, dynamic>> updatedPhotos =
+        photos.where((item) => item['photoID'] != photoID).toList();
+      print("\n Voici la photo: ${searchPhoto['photoID']}, de ${searchPhoto['owner']} \n");
+      photos = updatedPhotos;
+    } catch (e) {
+      print('\n Photo non trouvée \n');
+    }
   }
 }
