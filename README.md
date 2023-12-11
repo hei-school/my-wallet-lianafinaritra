@@ -17,22 +17,26 @@ It has been designed for:
 ### Installation
 
 Requirements:
-* Java environments
-* Javascript environments
-* Dart environments
-* Python
-
-Follow this step to run the project
 * [Javascript][JS-url]
 * [Python][PY-url]
 * [Dart][Dart-url]
 * [Java][Java-url]
 
+Follow this step to run the project
+* [Javascript][JS-Installation-url]
+* [Python][PY-Installation-url]
+* [Dart][Dart-Installation-url]
+* [Java][Java-Installation-url]
+
 ## Enjoy
 
 I hope that testing the application will be fun for you ... See you later ...
 
-[JS-url]: https://reactjs.org/
-[PY-url]: https://reactjs.org/
-[Dart-url]: https://reactjs.org/
-[Java-url]: https://reactjs.org/
+[JS-url]: https://nodejs.org/en/download
+[PY-url]: https://www.python.org/downloads/
+[Dart-url]: https://dart.dev/get-dart
+[Java-url]: https://www.oracle.com/java/technologies/downloads/
+[JS-Installation-url]: https://github.com/hei-school/my-wallet-lianafinaritra/blob/feature/Javascript/README.md
+[PY-Installation-url]: https://github.com/hei-school/my-wallet-lianafinaritra/blob/feature/Python/README.md
+[Dart-Installation-url]: https://github.com/hei-school/my-wallet-lianafinaritra/blob/feature/Dart/README.md
+[Java-Installation-url]: https://github.com/hei-school/my-wallet-lianafinaritra/blob/feature/Java/README.md
